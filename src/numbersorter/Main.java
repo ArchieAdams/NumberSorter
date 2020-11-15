@@ -12,18 +12,25 @@ public class Main {
 
         MergeSort mergeSort = new MergeSort(unsortedArray);
 
-        System.out.println("Unsorted Array:");
-        for (int i:unsortedArray){
-            System.out.print(i+" ");
-        }
-
-        mergeSort.sort();
+        System.out.println("Unsorted Array: ");
+        unsortedArray.forEach(i -> System.out.print(i + " "));
         System.out.println();
 
-        System.out.println("Sorted Array:");
-        for (int i:mergeSort.getSortedArray()){
-            System.out.print(i+" ");
+        mergeSort.sort();
+        ArrayList<Integer> sortedArray = mergeSort.getSortedArray();
+
+        System.out.println("Sorted Array: ");
+        sortedArray.forEach(i -> System.out.print(i + " "));
+        System.out.println();
+
+        System.out.println("Min : " + sortedArray.get(0));
+        System.out.println("Max : " + sortedArray.get(sortedArray.size()-1));
+
+        int total=0;
+        for (int i:sortedArray){
+            total+=i;
         }
+        System.out.println("Avg : "+total/sortedArray.size());
 
     }
 
@@ -40,9 +47,19 @@ public class Main {
     // </editor-fold>
 
     public static void numberOfNumbers(){
+        int loopNum;
         while (true) {
-            System.out.print("How many numbers do you want to have? ");
-            int loopNum = getInputInt();
+            while (true) {
+                try {
+                    System.out.print("How many numbers do you want to have? ");
+                    loopNum = getInputInt();
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Please enter an int!");
+                }
+            }
+
+
             if (loopNum >=10) {
                 looper(loopNum);
                 break;
@@ -55,8 +72,15 @@ public class Main {
 
     private static void looper(int loopNum){
         for (int i = 0; i < loopNum; i++) {
-            System.out.print("Enter number "+(i+1)+": ");
-            unsortedArray.add(getInputInt());
+            while (true) {
+                try {
+                    System.out.print("Enter number "+(i+1)+": ");
+                    unsortedArray.add(getInputInt());
+                    break;
+                } catch (Exception e) {
+                    System.out.println("Please enter an int!");
+                }
+            }
         }
     }
 }

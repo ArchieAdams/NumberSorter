@@ -27,7 +27,7 @@ public class MergeSort {
             splitter(min, mid); //Halves it (lower)
             splitter(mid+1, max); //Halves it (higher)
 
-            merger(min,mid,max); 
+            merger(min,mid,max);
         }
     }
 
