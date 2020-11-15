@@ -20,14 +20,14 @@ public class MergeSort {
 
     public void splitter(int min, int max){
 
-        if(min<max && (max-min)>=1){
+        if(min<max && (max-min)>=1){ //Loops till 1 item between min and max
 
             int mid = (max + min)/2;
 
-            splitter(min, mid);
-            splitter(mid+1, max);
+            splitter(min, mid); //Halves it (lower)
+            splitter(mid+1, max); //Halves it (higher)
 
-            merger(min,mid,max);
+            merger(min,mid,max); 
         }
     }
 
@@ -48,21 +48,18 @@ public class MergeSort {
             }
         }
 
-        while(leftIndex<=mid){
+        for(leftIndex=leftIndex;leftIndex<=mid;leftIndex++){
             mergedSortedArray.add(inputArray.get(leftIndex));
-            leftIndex++;
         }
 
-        while(rightIndex<=max){
+        for (rightIndex=rightIndex;rightIndex<=max;rightIndex++){
             mergedSortedArray.add(inputArray.get(rightIndex));
-            rightIndex++;
         }
 
-        int i = 0;
         int j = min;
 
-        while(i<mergedSortedArray.size()){
-            inputArray.set(j, mergedSortedArray.get(i++));
+        for(int i=0;i<mergedSortedArray.size();i++){
+            inputArray.set(j, mergedSortedArray.get(i));
             j++;
         }
     }
